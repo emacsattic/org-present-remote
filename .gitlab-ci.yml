@@ -1,0 +1,8 @@
+---
+image: debian:unstable
+stages:
+  - ci
+ci:
+  stage: ci
+  script: ./bin/ci.sh
+
