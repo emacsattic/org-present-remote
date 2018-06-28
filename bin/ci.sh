@@ -5,4 +5,11 @@ set -e
 apt update -qq
 apt install -y emacs-nox
 
-emacs -batch -l test-setup.el -l ert -l org-present-remote.el -l unit-tests.el -l integration-tests.el -f ert-run-tests-batch-and-exit
+emacs \
+    -batch \
+    -l tests/test-setup.el \
+    -l ert \
+    -l org-present-remote.el \
+    -l tests/unit-tests.el \
+    -l tests/integration-tests.el \
+    -f ert-run-tests-batch-and-exit
