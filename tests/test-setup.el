@@ -1,7 +1,7 @@
 (require 'package)
 
 (defvar org-present-remote/package-dependencies
-  '(elnode org-present esxml))
+  '(elnode org-present))
 
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))

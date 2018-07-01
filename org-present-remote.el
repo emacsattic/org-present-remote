@@ -4,7 +4,7 @@
 
 ;; Author: Duncan Bayne <duncan@bayne.id.au>
 ;; Version: 0.1
-;; Package-Requires: (org-present esxml elnode)
+;; Package-Requires: (org-present elnode)
 ;; Keywords: org-present
 ;; URL: https://gitlab.com/duncan-bayne/org-present-remote
 
