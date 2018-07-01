@@ -3,8 +3,9 @@
 (defvar org-present-remote/package-dependencies
   '(elnode org-present))
 
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 (package-refresh-contents)
 
