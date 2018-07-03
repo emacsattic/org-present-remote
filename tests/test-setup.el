@@ -1,16 +1,14 @@
 (require 'package)
 
-(defvar org-present-remote/package-dependencies
-  '(elnode org org-plus-contrib org-present))
-
 (package-initialize)
 
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")))
-
+(setq package-archives '(("org" . "https://orgmode.org/elpa/")))
 (package-refresh-contents)
+(package-install org org-plus-contrib)
 
-(mapcar (lambda (package-name) (package-install package-name)) org-present-remote/package-dependencies)
+(add-to-list 'package-archives '("gnu" . "http://melpa.org/packages/") t)
+(package-refresh-contents)
+(package-install org-present)
 
 (require 'org)
 

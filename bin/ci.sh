@@ -3,6 +3,7 @@
 set -e
 
 apt update -qq
+apt upgrade -y
 apt install -y emacs-nox
 
 emacs \
