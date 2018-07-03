@@ -17,7 +17,9 @@
     (org-present)
     (org-present-remote/remote-on "localhost"))
 
-  (switch-to-buffer (url-retrieve-synchronously "http://localhost:8009/"))
-  (print (buffer-string))
-  (should (buffer-contains-substring "<h1>test.org</h1>"))
-  (should (buffer-contains-substring "<h2>heading 1</h2>")))
+  (with-current-buffer (url-retrieve-synchronously "http://localhost:8009/" :silent nil)
+    (print ">>> HTML")
+    (print (buffer-string))
+    (print "<<< HTML")
+    (should (buffer-contains-substring "<h1>test.org</h1>"))
+    (should (buffer-contains-substring "<h2>heading 1</h2>"))))
