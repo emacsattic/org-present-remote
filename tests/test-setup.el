@@ -1,4 +1,5 @@
 (require 'package)
+(require 'org)
 
 (message (format "Emacs %s" emacs-version))
 (message (format "org %s" org-version))
