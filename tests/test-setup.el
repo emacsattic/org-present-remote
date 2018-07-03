@@ -8,7 +8,7 @@
 
 (add-to-list 'package-archives '("gnu" . "http://melpa.org/packages/") t)
 (package-refresh-contents)
-(package-install 'org-present)
+(mapcar #'package-install '(elnode org-present))
 
 (require 'org)
 
