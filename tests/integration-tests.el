@@ -10,7 +10,9 @@
   (when (get-buffer "test.org")
     (kill-buffer "test.org"))
 
-  (with-current-buffer (find-file "tests/fixtures/test.org")
+  (with-current-buffer (generate-new-buffer "test.org")
+    (org-mode)
+    (insert "* heading 1\n* heading 2\n")
     (org-present)
     (org-present-remote/remote-on "localhost"))
 
