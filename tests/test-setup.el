@@ -1,5 +1,9 @@
 (require 'package)
 
+(message (format "Emacs %s" emacs-version))
+(message (format "org %s" org-version)
+(message (format "org in %s" (locate-library "org")))
+
 (defvar org-present-remote/package-dependencies
   '(elnode org-present))
 
