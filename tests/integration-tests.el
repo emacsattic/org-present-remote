@@ -15,9 +15,9 @@
     (insert "* heading 1\n* heading 2")
     (goto-char (point-min))
     (org-present)
-    (org-present-remote/remote-on "localhost"))
+    (org-present-remote/remote-on "127.0.0.1"))
 
-  (with-current-buffer (url-retrieve-synchronously "http://localhost:8009/" :silent nil)
+  (with-current-buffer (url-retrieve-synchronously "http://127.0.0.1:8009/" :silent nil)
     (print ">>> HTML")
     (print (buffer-string))
     (print "<<< HTML")
