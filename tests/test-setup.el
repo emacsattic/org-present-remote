@@ -1,7 +1,7 @@
 (require 'package)
 
 (defvar org-present-remote/package-dependencies
-  '(elnode org org-present))
+  '(elnode org org-plus-contrib org-present))
 
 (package-initialize)
 
