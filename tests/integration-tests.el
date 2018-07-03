@@ -12,7 +12,8 @@
 
   (with-current-buffer (generate-new-buffer "test.org")
     (org-mode)
-    (insert "* heading 1\n* heading 2\n")
+    (insert "* heading 1\n* heading 2")
+    (goto-char (point-min))
     (org-present)
     (org-present-remote/remote-on "localhost"))
 
