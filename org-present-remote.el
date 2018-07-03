@@ -54,9 +54,6 @@
      </body>
    </html>")
 
-;; the TCP/IP port on which to listen
-(defvar org-present-remote/port 8009)
-
 ;; the buffer used by the remote
 (defvar org-present-remote/remote-buffer)
 
@@ -115,16 +112,17 @@ Shamelessly lifted from https://github.com/nicferrier/elnode/blob/master/example
   "Turn the org-present remote control on."
   (interactive "sStart remote control for this buffer on host: ")
   (setq elnode-error-log-to-messages nil)
-  (elnode-stop org-present-remote/port)
+  (elnode-stop 8009)
   (setq org-present-remote/remote-buffer (current-buffer))
   (add-hook 'org-present-after-navigate-functions 'org-present-remote/remote-set-title)
-  (message (concatenate 'string "Starting org-present-remote server on " host))
-  (elnode-start 'org-present-remote/root-handler :port org-present-remote/port :host host))
+  (print (format "Starting org-present-remote server on %s:%d" host 8009))
+  (elnode-start 'org-present-remote/root-handler :port 8009 :host host)
+  (print (format "Started org-present-remote server on %s:%d" host 8009)))
 
 (defun org-present-remote/remote-off ()
   "Turn the org-present remote control off."
   (interactive)
-  (elnode-stop org-present-remote/port)
+  (elnode-stop 8009)
   (setq org-present-remote/remote-buffer nil))
 
 ;; courtesy Xah Lee ( http://ergoemacs.org/emacs/modernization_elisp_lib_problem.html )
