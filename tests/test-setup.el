@@ -4,11 +4,11 @@
 
 (setq package-archives '(("org" . "https://orgmode.org/elpa/")))
 (package-refresh-contents)
-(package-install org org-plus-contrib)
+(mapcar #'package-install '(org org-plus-contrib))
 
 (add-to-list 'package-archives '("gnu" . "http://melpa.org/packages/") t)
 (package-refresh-contents)
-(package-install org-present)
+(package-install 'org-present)
 
 (require 'org)
 
