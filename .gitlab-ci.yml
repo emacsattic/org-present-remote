@@ -1,5 +1,5 @@
 ---
-image: ubuntu
+image: ubuntu:devel
 stages:
   - ci
 ci:
