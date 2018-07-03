@@ -2,7 +2,7 @@
 
 (package-initialize)
 
-(setq package-archives '(("org" . "https://orgmode.org/elpa/")))
+(setq package-archives '(("org" . "http://orgmode.org/elpa/")))
 (package-refresh-contents)
 (mapcar #'package-install '(org org-plus-contrib))
 
