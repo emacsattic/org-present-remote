@@ -1,12 +1,11 @@
 (require 'package)
-(require 'org)
 
 (message (format "Emacs %s" emacs-version))
 (message (format "org %s" org-version))
 (message (format "org in %s" (locate-library "org")))
 
 (defvar org-present-remote/package-dependencies
-  '(elnode org-present))
+  '(elnode org org-present))
 
 (package-initialize)
 
@@ -16,4 +15,6 @@
 (package-refresh-contents)
 
 (mapcar (lambda (package-name) (package-install package-name)) org-present-remote/package-dependencies)
+
+(require 'org)
 
