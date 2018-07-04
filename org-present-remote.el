@@ -68,6 +68,7 @@
 
 (defun org-present-remote/html ()
   "Build the page HTML from the template and selected variables."
+  (print (format "org-present-remote/remote-title is %s" org-present-remote/remote-title))
   (format org-present-remote/html-template
           (org-present-remote/html-escape (buffer-name org-present-remote/remote-buffer))
           (org-present-remote/html-escape (buffer-name org-present-remote/remote-buffer))
