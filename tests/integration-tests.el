@@ -20,6 +20,8 @@
     (org-present)
     (org-present-remote/remote-on "127.0.0.1"))
 
+  (print "attempting to download page")
+
   (with-current-buffer (url-retrieve-synchronously "http://127.0.0.1:8009/" :silent nil)
     (print ">>> HTML")
     (print (buffer-string))

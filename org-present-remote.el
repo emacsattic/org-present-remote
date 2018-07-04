@@ -58,7 +58,7 @@
 (defvar org-present-remote/remote-buffer)
 
 ;; the title of the remote page
-(defvar org-present-remote/remote-title)
+(defvar org-present-remote/remote-title "UNKNOWN")
 
 ;; which remote control routes should be hooked up to which handlers
 (defvar org-present-remote/routes
