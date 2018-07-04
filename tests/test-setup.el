@@ -6,7 +6,7 @@
 (package-refresh-contents)
 (mapcar #'package-install '(org org-plus-contrib))
 
-(add-to-list 'package-archives '("gnu" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-refresh-contents)
 (mapcar #'package-install '(elnode org-present))
 
