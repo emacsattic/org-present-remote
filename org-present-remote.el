@@ -115,6 +115,10 @@ Shamelessly lifted from https://github.com/nicferrier/elnode/blob/master/example
   (elnode-stop 8009)
   (setq org-present-remote/remote-buffer (current-buffer))
   (add-hook 'org-present-after-navigate-functions 'org-present-remote/remote-set-title)
+
+  (unless (boundp 'org-present-after-navigate-functions)
+    (error "org-present-after-navigate-functions is not bound. Are you using a recent build of org-present?"))
+
   (print (format "Starting org-present-remote server on %s:%d" host 8009))
   (elnode-start 'org-present-remote/root-handler :port 8009 :host host)
   (print (format "Started org-present-remote server on %s:%d" host 8009)))
