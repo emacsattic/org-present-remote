@@ -12,6 +12,6 @@
 
 (require 'org)
 
-(message (format "Emacs %s" emacs-version))
-(message (format "org %s" org-version))
-(message (format "org in %s" (locate-library "org")))
+(print (format "Emacs %s" emacs-version))
+(print (format "org %s" org-version))
+(print (format "org in %s" (locate-library "org")))
