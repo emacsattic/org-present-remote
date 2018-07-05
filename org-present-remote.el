@@ -117,7 +117,7 @@ Shamelessly lifted from https://github.com/nicferrier/elnode/blob/master/example
   (interactive "sStart remote control for this buffer on host: ")
   (setq elnode-error-log-to-messages nil)
   (elnode-stop 8009)
-  (setq org-present-remote/remote-buffer (current-buffer)))
+  (setq org-present-remote/remote-buffer (current-buffer))
 
   (unless (boundp 'org-present-after-navigate-functions)
     (error "org-present-after-navigate-functions is not bound. Are you using a recent build of org-present?"))
