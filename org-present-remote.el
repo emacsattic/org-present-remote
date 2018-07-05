@@ -9,6 +9,9 @@
 ;; URL: https://gitlab.com/duncan-bayne/org-present-remote
 
 (require 'elnode)
+(require 'org-present)
+
+(add-hook 'org-present-after-navigate-functions 'org-present-remote/remote-set-title)
 
 ;; the HTML displayed in the remote control web page
 (defvar org-present-remote/html-template
@@ -114,8 +117,7 @@ Shamelessly lifted from https://github.com/nicferrier/elnode/blob/master/example
   (interactive "sStart remote control for this buffer on host: ")
   (setq elnode-error-log-to-messages nil)
   (elnode-stop 8009)
-  (setq org-present-remote/remote-buffer (current-buffer))
-  (add-hook 'org-present-after-navigate-functions 'org-present-remote/remote-set-title)
+  (setq org-present-remote/remote-buffer (current-buffer)))
 
   (unless (boundp 'org-present-after-navigate-functions)
     (error "org-present-after-navigate-functions is not bound. Are you using a recent build of org-present?"))
