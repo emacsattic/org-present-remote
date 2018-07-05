@@ -14,11 +14,9 @@
     (org-mode)
     (insert "* heading 1\n* heading 2")
     (goto-char (point-min))
-    (print (buffer-string))
     (org-present)
     (org-present-remote/remote-on "127.0.0.1"))
 
   (with-current-buffer (url-retrieve-synchronously "http://127.0.0.1:8009/" :silent nil)
-    (print (buffer-string))
     (should (buffer-contains-substring "<h1>test.org</h1>"))
     (should (buffer-contains-substring "<h2>heading 1</h2>"))))
