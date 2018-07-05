@@ -19,4 +19,12 @@
 
   (with-current-buffer (url-retrieve-synchronously "http://127.0.0.1:8009/" :silent nil)
     (should (buffer-contains-substring "<h1>test.org</h1>"))
+    (should (buffer-contains-substring "<h2>heading 1</h2>")))
+
+  (with-current-buffer (url-retrieve-synchronously "http://127.0.0.1:8009/next" :silent nil)
+    (should (buffer-contains-substring "<h1>test.org</h1>"))
+    (should (buffer-contains-substring "<h2>heading 2</h2>")))
+
+  (with-current-buffer (url-retrieve-synchronously "http://127.0.0.1:8009/prev" :silent nil)
+    (should (buffer-contains-substring "<h1>test.org</h1>"))
     (should (buffer-contains-substring "<h2>heading 1</h2>"))))
