@@ -71,7 +71,6 @@
 
 (defun org-present-remote/html ()
   "Build the page HTML from the template and selected variables."
-  (print (format "org-present-remote/remote-title is %s" org-present-remote/remote-title))
   (format org-present-remote/html-template
           (org-present-remote/html-escape (buffer-name org-present-remote/remote-buffer))
           (org-present-remote/html-escape (buffer-name org-present-remote/remote-buffer))
@@ -122,9 +121,7 @@ Shamelessly lifted from https://github.com/nicferrier/elnode/blob/master/example
   (unless (boundp 'org-present-after-navigate-functions)
     (error "org-present-after-navigate-functions is not bound. Are you using a recent build of org-present?"))
 
-  (print (format "Starting org-present-remote server on %s:%d" host 8009))
-  (elnode-start 'org-present-remote/root-handler :port 8009 :host host)
-  (print (format "Started org-present-remote server on %s:%d" host 8009)))
+  (elnode-start 'org-present-remote/root-handler :port 8009 :host host))
 
 (defun org-present-remote/remote-off ()
   "Turn the org-present remote control off."
