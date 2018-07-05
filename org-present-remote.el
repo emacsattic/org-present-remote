@@ -16,11 +16,11 @@
 ;; the HTML displayed in the remote control web page
 (defvar org-present-remote/html-template
   "<!doctype html>
-   <html>
+   <html lang='en-AU'>
      <head>
        <meta charset='utf-8' />
        <title>%s</title> <!-- presentation name -->
-       <style type='text/css'>
+       <style>
          h1 {
            font-size: 9vmin;
          }
