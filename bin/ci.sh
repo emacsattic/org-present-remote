@@ -9,6 +9,12 @@ apt install -y emacs-nox
 emacs \
     -batch \
     -l tests/test-setup.el \
+    -l org-present-remote.el \
+    -l tests/lint-tests.el
+
+emacs \
+    -batch \
+    -l tests/test-setup.el \
     -l ert \
     -l org-present-remote.el \
     -l tests/integration-tests.el \
