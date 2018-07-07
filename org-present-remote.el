@@ -1,5 +1,11 @@
 ;;; org-present-remote.el --- A web-based remote control for org-present
 
+;;; Commentary:
+
+;; org-present-remote adds a simple, mobile-friendly web remote
+;; control for moving between slides in
+;; [[https://github.com/rlister/org-present][org-present]].
+
 ;; Copyright (C) 2018 Duncan Bayne
 ;; Author: Duncan Bayne <duncan@bayne.id.au>
 ;; Package-Version: 0.1
