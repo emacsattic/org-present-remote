@@ -8,7 +8,7 @@ for moving between slides in [[https://github.com/rlister/org-present][org-prese
 ** usage
 
 To start it, first enter presentation mode with ~M-x org-present~,
-then do ~M-x org-present-remote-on~.
+then do ~M-x org-present-remote--remote-on~.
 
 You will need to enter the host to which to make the interface
 available on.  For local testing this can be ~localhost~.  For actual

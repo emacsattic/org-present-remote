@@ -5,16 +5,15 @@
 ;; Author: Duncan Bayne <duncan@bayne.id.au>
 ;; Version: 0.1
 ;; Package-Requires: (org-present elnode)
-;; Keywords: org-present
 ;; URL: https://gitlab.com/duncan-bayne/org-present-remote
 
 (require 'elnode)
 (require 'org-present)
 
-(add-hook 'org-present-after-navigate-functions 'org-present-remote/remote-set-title)
+(add-hook 'org-present-after-navigate-functions 'org-present-remote--remote-set-title)
 
 ;; the HTML displayed in the remote control web page
-(defvar org-present-remote/html-template
+(defvar org-present-remote--html-template
   "<!doctype html>
    <html lang='en-AU'>
      <head>
@@ -58,45 +57,45 @@
    </html>")
 
 ;; the buffer used by the remote
-(defvar org-present-remote/remote-buffer)
+(defvar org-present-remote--remote-buffer)
 
 ;; the title of the remote page
-(defvar org-present-remote/remote-title "UNKNOWN")
+(defvar org-present-remote--remote-title "UNKNOWN")
 
 ;; which remote control routes should be hooked up to which handlers
-(defvar org-present-remote/routes
-  '(("^.*//prev$" . org-present-remote/prev-handler)
-    ("^.*//next$" . org-present-remote/next-handler)
-    ("^.*//$" . org-present-remote/default-handler)))
+(defvar org-present-remote--routes
+  '(("^.*//prev$" . org-present-remote--prev-handler)
+    ("^.*//next$" . org-present-remote--next-handler)
+    ("^.*//$" . org-present-remote--default-handler)))
 
-(defun org-present-remote/html ()
+(defun org-present-remote--html ()
   "Build the page HTML from the template and selected variables."
-  (format org-present-remote/html-template
-          (org-present-remote/html-escape (buffer-name org-present-remote/remote-buffer))
-          (org-present-remote/html-escape (buffer-name org-present-remote/remote-buffer))
-          (org-present-remote/html-escape org-present-remote/remote-title)))
+  (format org-present-remote--html-template
+          (org-present-remote--html-escape (buffer-name org-present-remote--remote-buffer))
+          (org-present-remote--html-escape (buffer-name org-present-remote--remote-buffer))
+          (org-present-remote--html-escape org-present-remote--remote-title)))
 
-(defun org-present-remote/prev-handler (httpcon)
+(defun org-present-remote--prev-handler (httpcon)
   "Call org-present-prev when someone GETs /prev, and return the remote control page."
-  (with-current-buffer org-present-remote/remote-buffer (org-present-prev))
+  (with-current-buffer org-present-remote--remote-buffer (org-present-prev))
   (elnode-http-start httpcon 200 '("Content-type" . "text/html"))
-  (elnode-http-return httpcon (org-present-remote/html)))
+  (elnode-http-return httpcon (org-present-remote--html)))
 
-(defun org-present-remote/next-handler (httpcon)
+(defun org-present-remote--next-handler (httpcon)
   "Call org-present-next when someone GETs /prev, and return the remote control page."
-  (with-current-buffer org-present-remote/remote-buffer (org-present-next))
+  (with-current-buffer org-present-remote--remote-buffer (org-present-next))
   (elnode-http-start httpcon 200 '("Content-type" . "text/html"))
-  (elnode-http-return httpcon (org-present-remote/html)))
+  (elnode-http-return httpcon (org-present-remote--html)))
 
-(defun org-present-remote/default-handler (httpcon)
+(defun org-present-remote--default-handler (httpcon)
   "Return the remote control page."
   (elnode-http-start httpcon 200 '("Content-type" . "text/html"))
-  (elnode-http-return httpcon (org-present-remote/html)))
+  (elnode-http-return httpcon (org-present-remote--html)))
 
-(defun org-present-remote/root-handler (httpcon)
-  (elnode-hostpath-dispatcher httpcon org-present-remote/routes))
+(defun org-present-remote--root-handler (httpcon)
+  (elnode-hostpath-dispatcher httpcon org-present-remote--routes))
 
-(defun org-present-remote/html-escape (str)
+(defun org-present-remote--html-escape (str)
   "Escape significant HTML characters in 'str'.
 Shamelessly lifted from https://github.com/nicferrier/elnode/blob/master/examples/org-present.el"
   (replace-regexp-in-string
@@ -107,29 +106,29 @@ Shamelessly lifted from https://github.com/nicferrier/elnode/blob/master/example
       ((equal src "<")  "&lt;")))
    str))
 
-(defun org-present-remote/remote-set-title (name heading)
+(defun org-present-remote--remote-set-title (name heading)
   "Set the title to display in the remote control."
-  (setq org-present-remote/remote-title heading))
+  (setq org-present-remote--remote-title heading))
 
-(defun org-present-remote/remote-on (host)
+(defun org-present-remote--remote-on (host)
   "Turn the org-present remote control on."
   (interactive "sStart remote control for this buffer on host: ")
   (setq elnode-error-log-to-messages nil)
   (elnode-stop 8009)
-  (setq org-present-remote/remote-buffer (current-buffer))
+  (setq org-present-remote--remote-buffer (current-buffer))
 
   (unless (boundp 'org-present-after-navigate-functions)
     (error "org-present-after-navigate-functions is not bound. Are you using a recent build of org-present?"))
 
-  (elnode-start 'org-present-remote/root-handler :port 8009 :host host))
+  (elnode-start 'org-present-remote--root-handler :port 8009 :host host))
 
-(defun org-present-remote/remote-off ()
+(defun org-present-remote--remote-off ()
   "Turn the org-present remote control off."
   (interactive)
   (elnode-stop 8009)
-  (setq org-present-remote/remote-buffer nil))
+  (setq org-present-remote--remote-buffer nil))
 
-(defun org-present-remote/trim-string (string)
+(defun org-present-remote--trim-string (string)
   "Remove whitespace (space, tab, emacs newline (LF, ASCII 10)) in beginning and ending of STRING.
 ;; courtesy Xah Lee ( http://ergoemacs.org/emacs/modernization_elisp_lib_problem.html )"
   (replace-regexp-in-string
