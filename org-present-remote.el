@@ -95,13 +95,6 @@ heading."
   (elnode-http-return httpcon (org-present-remote--html)))
 
 (defun org-present-remote--next-handler (httpcon)
-  "Call ‘org-present-next’ when someone GETs /next.
-
-HTTPCON is the HTTP connection used to request the move to
-next.
-
-Returns the remote control page, updated with the correct
-heading."
   (with-current-buffer org-present-remote--remote-buffer (org-present-next))
   (elnode-http-start httpcon 200 '("Content-type" . "text/html"))
   (elnode-http-return httpcon (org-present-remote--html)))
