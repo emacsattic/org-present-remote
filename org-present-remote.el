@@ -1,10 +1,15 @@
-;;; org-present-remote --- provides a Web remote control for org-present
+;;; org-present-remote.el --- A web-based remote control for org-present
 
-;; Copyright © 2018 Duncan Bayne
+;;; Commentary:
 
+;; org-present-remote adds a simple, mobile-friendly web remote
+;; control for moving between slides in
+;; [[https://github.com/rlister/org-present][org-present]].
+
+;; Copyright (C) 2018 Duncan Bayne
 ;; Author: Duncan Bayne <duncan@bayne.id.au>
-;; Version: 0.1
-;; Package-Requires: (org-present elnode)
+;; Package-Version: 0.1
+;; Package-Requires: ((org-present "9") (elnode "0.9"))
 ;; URL: https://gitlab.com/duncan-bayne/org-present-remote
 
 (require 'elnode)
@@ -134,3 +139,6 @@ Shamelessly lifted from https://github.com/nicferrier/elnode/blob/master/example
   (replace-regexp-in-string
    "\\`[ \t\n]*" ""
    (replace-regexp-in-string "[ \t\n]*\\'" "" string)))
+
+(provide 'org-present-remote)
+;;; org-present-remote.el ends here
