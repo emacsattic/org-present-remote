@@ -15,6 +15,8 @@
 (require 'elnode)
 (require 'org-present)
 
+;;; Code:
+
 (add-hook 'org-present-after-navigate-functions 'org-present-remote--remote-set-title)
 
 ;; the HTML displayed in the remote control web page
@@ -81,27 +83,47 @@
           (org-present-remote--html-escape org-present-remote--remote-title)))
 
 (defun org-present-remote--prev-handler (httpcon)
-  "Call org-present-prev when someone GETs /prev, and return the remote control page."
+  "Call ‘org-present-prev’ when someone GETs /prev.
+
+HTTPCON is the HTTP connection used to request the move to
+previous.
+
+Returns the remote control page, updated with the correct
+heading."
   (with-current-buffer org-present-remote--remote-buffer (org-present-prev))
   (elnode-http-start httpcon 200 '("Content-type" . "text/html"))
   (elnode-http-return httpcon (org-present-remote--html)))
 
 (defun org-present-remote--next-handler (httpcon)
-  "Call org-present-next when someone GETs /prev, and return the remote control page."
+  "Call ‘org-present-next’ when someone GETs /next.
+
+HTTPCON is the HTTP connection used to request the move to
+next.
+
+Returns the remote control page, updated with the correct
+heading."
   (with-current-buffer org-present-remote--remote-buffer (org-present-next))
   (elnode-http-start httpcon 200 '("Content-type" . "text/html"))
   (elnode-http-return httpcon (org-present-remote--html)))
 
 (defun org-present-remote--default-handler (httpcon)
-  "Return the remote control page."
+  "Return the remote control page when someone gets /.
+
+HTTPCON is the HTTP connection used to request the remote control page."
   (elnode-http-start httpcon 200 '("Content-type" . "text/html"))
   (elnode-http-return httpcon (org-present-remote--html)))
 
 (defun org-present-remote--root-handler (httpcon)
+  "Create a dispatcher using org-present-remote routes.
+
+HTTPCON is the HTTP connection used by the request."
   (elnode-hostpath-dispatcher httpcon org-present-remote--routes))
 
 (defun org-present-remote--html-escape (str)
   "Escape significant HTML characters in 'str'.
+
+STR is the string to escape.
+
 Shamelessly lifted from https://github.com/nicferrier/elnode/blob/master/examples/org-present.el"
   (replace-regexp-in-string
    "<\\|\\&"
@@ -112,30 +134,36 @@ Shamelessly lifted from https://github.com/nicferrier/elnode/blob/master/example
    str))
 
 (defun org-present-remote--remote-set-title (name heading)
-  "Set the title to display in the remote control."
+  "Set the title to display in the remote control.
+
+NAME is the name of the presentation buffer.
+HEADING is the current heading within that buffer."
   (setq org-present-remote--remote-title heading))
 
 (defun org-present-remote--remote-on (host)
-  "Turn the org-present remote control on."
+  "Turn the presentation remote control on.
+
+HOST is the host to which to bind (e.g. \"localhost\")"
   (interactive "sStart remote control for this buffer on host: ")
   (setq elnode-error-log-to-messages nil)
   (elnode-stop 8009)
   (setq org-present-remote--remote-buffer (current-buffer))
 
   (unless (boundp 'org-present-after-navigate-functions)
-    (error "org-present-after-navigate-functions is not bound. Are you using a recent build of org-present?"))
+    (error "Abnormal hook org-present-after-navigate-functions is not bound.  Are you using a recent build of org-present?"))
 
   (elnode-start 'org-present-remote--root-handler :port 8009 :host host))
 
 (defun org-present-remote--remote-off ()
-  "Turn the org-present remote control off."
+  "Turn the presentation remote control off."
   (interactive)
   (elnode-stop 8009)
   (setq org-present-remote--remote-buffer nil))
 
 (defun org-present-remote--trim-string (string)
-  "Remove whitespace (space, tab, emacs newline (LF, ASCII 10)) in beginning and ending of STRING.
-  Courtesy Xah Lee ( http://ergoemacs.org/emacs/modernization_elisp_lib_problem.html )."
+  "Remove whitespace at beginning and ending of STRING.
+Whitespace is defined as: space, tab, Emacs newline (LF, ASCII 10).
+Courtesy Xah Lee ( http://ergoemacs.org/emacs/modernization_elisp_lib_problem.html )."
   (replace-regexp-in-string
    "\\`[ \t\n]*" ""
    (replace-regexp-in-string "[ \t\n]*\\'" "" string)))
