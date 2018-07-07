@@ -135,7 +135,7 @@ Shamelessly lifted from https://github.com/nicferrier/elnode/blob/master/example
 
 (defun org-present-remote--trim-string (string)
   "Remove whitespace (space, tab, emacs newline (LF, ASCII 10)) in beginning and ending of STRING.
-;; courtesy Xah Lee ( http://ergoemacs.org/emacs/modernization_elisp_lib_problem.html )"
+  Courtesy Xah Lee ( http://ergoemacs.org/emacs/modernization_elisp_lib_problem.html )."
   (replace-regexp-in-string
    "\\`[ \t\n]*" ""
    (replace-regexp-in-string "[ \t\n]*\\'" "" string)))
