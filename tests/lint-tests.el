@@ -3,5 +3,5 @@
 (require 'package-lint)
 
 (with-current-buffer (find-file "org-present-remote.el")
-  (checkdoc-current-buffer t)
+  (checkdoc-current-buffer)
   (package-lint-current-buffer))
