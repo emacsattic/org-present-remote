@@ -1,5 +1,7 @@
 * org-present-remote
 
+[[https://gitlab.com/duncan-bayne/org-present-remote/commits/master][https://gitlab.com/duncan-bayne/org-present-remote/badges/master/pipeline.svg]]
+
 org-present-remote adds a simple, mobile-friendly web remote control
 for moving between slides in [[https://github.com/rlister/org-present][org-present]].
 
