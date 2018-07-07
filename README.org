@@ -17,7 +17,7 @@ use you will need to supply your machine's IP address.
 Then use a browser to open the remote control by browsing to port 8009
 on the host you supplied, e.g.:
 
-[http://localhost:8009/](http://localhost:8009)
+[[http://localhost:8009/][http://localhost:8009]]
 
 ** faq
 *** how do I determine my IP address?
