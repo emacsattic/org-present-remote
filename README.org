@@ -40,3 +40,5 @@ wlan0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
   -amsdutx amsdurx shortgi -stbc wme roaming MANUAL
   groups: wlan
 #+END_SRC
+
+From this you can see that your IP address is 192.168.43.81.
