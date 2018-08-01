@@ -160,13 +160,5 @@ HOST is the host to which to bind (e.g. \"localhost\")"
   (elnode-stop 8009)
   (setq org-present-remote--remote-buffer nil))
 
-(defun org-present-remote--trim-string (string)
-  "Remove whitespace at beginning and ending of STRING.
-Whitespace is defined as: space, tab, Emacs newline (LF, ASCII 10).
-Courtesy Xah Lee ( http://ergoemacs.org/emacs/modernization_elisp_lib_problem.html )."
-  (replace-regexp-in-string
-   "\\`[ \t\n]*" ""
-   (replace-regexp-in-string "[ \t\n]*\\'" "" string)))
-
 (provide 'org-present-remote)
 ;;; org-present-remote.el ends here
