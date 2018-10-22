@@ -5,6 +5,8 @@
 org-present-remote adds a simple, mobile-friendly web remote control
 for moving between slides in [[https://github.com/rlister/org-present][org-present]].
 
+[[https://i.postimg.cc/TYJWZRNk/org-present-remote.png]]
+
 ** usage
 
 To start it, first enter presentation mode with ~M-x org-present~,
