@@ -1,5 +1,5 @@
 ---
-image: ubuntu:devel
+image: ubuntu:bionic
 stages:
   - ci
 ci:
