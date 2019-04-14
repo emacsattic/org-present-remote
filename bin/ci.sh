@@ -4,7 +4,7 @@ set -e
 
 apt update -qq
 apt upgrade -y
-apt install -y emacs-nox
+apt install -y emacs-nox curl
 
 curl https://orgmode.org/elpa/
 
