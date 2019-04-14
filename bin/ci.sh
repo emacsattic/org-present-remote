@@ -6,6 +6,8 @@ apt update -qq
 apt upgrade -y
 apt install -y emacs-nox
 
+curl https://orgmode.org/elpa/
+
 emacs \
     -batch \
     -l tests/test-setup.el \
