@@ -4,7 +4,10 @@ set -e
 
 apt update -qq
 apt upgrade -y
-apt install -y emacs-nox 
+
+apt install -y \
+    curl \
+    emacs-nox
 
 emacs \
     -batch \
