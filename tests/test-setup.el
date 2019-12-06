@@ -4,11 +4,11 @@
 
 (setq package-archives '(("org" . "https://orgmode.org/elpa/")))
 (package-refresh-contents)
-(mapcar #'package-install '(org-plus-contrib))
+(mapcar #'package-install '(let-alist org-plus-contrib))
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-refresh-contents)
-(mapcar #'package-install '(let-alist elnode org-present package-lint))
+(mapcar #'package-install '(elnode org-present package-lint))
 
 (require 'org)
 
