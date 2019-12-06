@@ -8,7 +8,7 @@
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-refresh-contents)
-(mapcar #'package-install '(elnode org-present package-lint))
+(mapcar #'package-install '(let-alist elnode org-present package-lint))
 
 (require 'org)
 
