@@ -9,6 +9,8 @@ apt install -y \
     curl \
     emacs-nox
 
+emacs --version
+
 emacs \
     -batch \
     -l tests/test-setup.el \
