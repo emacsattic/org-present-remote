@@ -1,6 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-set -e
+set -euxo pipefail
 
 apt update -qq
 apt upgrade -y
