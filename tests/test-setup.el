@@ -2,13 +2,11 @@
 
 (package-initialize)
 
-(setq package-archives '(("org" . "https://orgmode.org/elpa/")))
-(package-refresh-contents)
-(mapcar #'package-install '(org-plus-contrib))
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")))
 
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-refresh-contents)
-(mapcar #'package-install '(elnode org-present package-lint))
+(mapcar #'package-install '(org-plus-contrib elnode org-present package-lint))
 
 (require 'org)
 
