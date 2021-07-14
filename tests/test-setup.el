@@ -8,7 +8,7 @@
 
 
 (package-refresh-contents)
-(mapcar #'package-install '(org-plus-contrib elnode fakir org-present package-lint s))
+(mapcar #'package-install '(org-plus-contrib elnode fakir org-present package-lint s web))
 
 (require 'org)
 

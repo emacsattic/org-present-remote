@@ -4,7 +4,7 @@
 
 ;; Author: Duncan Bayne <duncan@bayne.id.au>
 ;; Package-Version: 0.1
-;; Package-Requires: ((org-present "9") (elnode "0.9") (emacs "25") (fakir "20140729.1652") (s "20210616.619"))
+;; Package-Requires: ((org-present "9") (elnode "0.9") (emacs "25") (fakir "20140729.1652") (s "20210616.619") ("web" 20141231.2001))
 ;; URL: https://gitlab.com/duncan-bayne/org-present-remote
 ;; Keywords: comm, docs
 
