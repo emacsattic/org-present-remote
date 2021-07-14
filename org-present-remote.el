@@ -4,7 +4,7 @@
 
 ;; Author: Duncan Bayne <duncan@bayne.id.au>
 ;; Package-Version: 0.1
-;; Package-Requires: ((org-present "9") (elnode "0.9") (emacs "25"))
+;; Package-Requires: ((org-present "9") (elnode "0.9") (emacs "25") (fakir "20140729.1652"))
 ;; URL: https://gitlab.com/duncan-bayne/org-present-remote
 ;; Keywords: comm, docs
 
@@ -45,30 +45,30 @@
        <meta charset='utf-8' />
        <title>%s</title> <!-- presentation name -->
        <style>
-         h1 {
-           font-size: 9vmin;
-         }
-         h2 {
-           font-size: 7vmin;
-         }
-         body {
-           font-size: 5vmin;
-         }
-         .next {
-           float: right;
-         }
-         .prev {
-           float: left;
-         }
-         .logo {
-           text-align: center;
-         }
-         .next, .prev {
-           font-size: 12vmin;
-         }
-         img.icon {
-           height: 160px;
-         }
+	 h1 {
+	   font-size: 9vmin;
+	 }
+	 h2 {
+	   font-size: 7vmin;
+	 }
+	 body {
+	   font-size: 5vmin;
+	 }
+	 .next {
+	   float: right;
+	 }
+	 .prev {
+	   float: left;
+	 }
+	 .logo {
+	   text-align: center;
+	 }
+	 .next, .prev {
+	   font-size: 12vmin;
+	 }
+	 img.icon {
+	   height: 160px;
+	 }
        </style>
      </head>
      <body>
@@ -96,9 +96,9 @@
 (defun org-present-remote--html ()
   "Build the page HTML from the template and selected variables."
   (format org-present-remote--html-template
-          (org-present-remote--html-escape (buffer-name org-present-remote--remote-buffer))
-          (org-present-remote--html-escape (buffer-name org-present-remote--remote-buffer))
-          (org-present-remote--html-escape org-present-remote--remote-title)))
+	  (org-present-remote--html-escape (buffer-name org-present-remote--remote-buffer))
+	  (org-present-remote--html-escape (buffer-name org-present-remote--remote-buffer))
+	  (org-present-remote--html-escape org-present-remote--remote-title)))
 
 (defun org-present-remote--prev-handler (httpcon)
   "Call ‘org-present-prev’ when someone GETs /prev.
